@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 
 import dev.VideoGame.Dragons.Display.*;
 import dev.VideoGame.Dragons.gfx.ImageLoader;
+import dev.VideoGame.Dragons.gfx.SpriteSheet;
 
 public class Game implements Runnable {
 	
@@ -20,7 +21,10 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private BufferedImage testImage;
+	private BufferedImage test;
+	private SpriteSheet sheet;
+	
+	
 	
 	public Game(String title, int width, int height) {
 		this.width = width;
@@ -33,7 +37,9 @@ public class Game implements Runnable {
 	//init- Initialize the graphics of the game
 	public void init() {
 		Display = new Display(title,width, height);
-		testImage = ImageLoader.loadImage("/textures/stormfly.png");
+		test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
+		sheet = new SpriteSheet(test);
+		
 					
 		}
 		
@@ -53,7 +59,8 @@ private void tick() {  //could be called update
 		g.clearRect(0, 0, width, height);  //clear screen after draw
 		//Draw here
 		
-		g.drawImage(testImage, 10, 10, null);	
+		g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);
+		//g.drawImage(testImage, 10, 10, null);	example
 		
 		//End Draw
 		bs.show();
