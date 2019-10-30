@@ -3,8 +3,10 @@ package dev.VideoGame.Dragons;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import dev.VideoGame.Dragons.Display.*;
+import dev.VideoGame.Dragons.gfx.ImageLoader;
 
 public class Game implements Runnable {
 	
@@ -18,6 +20,8 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
+	private BufferedImage testImage;
+	
 	public Game(String title, int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -29,6 +33,7 @@ public class Game implements Runnable {
 	//init- Initialize the graphics of the game
 	public void init() {
 		Display = new Display(title,width, height);
+		testImage = ImageLoader.loadImage("/textures/stormfly.png");
 					
 		}
 		
@@ -48,10 +53,7 @@ private void tick() {  //could be called update
 		g.clearRect(0, 0, width, height);  //clear screen after draw
 		//Draw here
 		
-		g.setColor(Color.red);
-		g.fillRect(10, 50, 50, 70);
-		g.setColor(Color.pink);
-		g.fillRect(2, 2, 10, 10);
+		g.drawImage(testImage, 10, 10, null);	
 		
 		//End Draw
 		bs.show();
