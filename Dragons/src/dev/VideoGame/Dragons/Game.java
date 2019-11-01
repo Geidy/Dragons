@@ -1,13 +1,14 @@
 package dev.VideoGame.Dragons;
 
-import java.awt.Color;
+//import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
+//import java.awt.image.BufferedImage;
 
 import dev.VideoGame.Dragons.Display.*;
-import dev.VideoGame.Dragons.gfx.ImageLoader;
-import dev.VideoGame.Dragons.gfx.SpriteSheet;
+import dev.VideoGame.Dragons.gfx.Assets;
+//import dev.VideoGame.Dragons.gfx.ImageLoader;
+//import dev.VideoGame.Dragons.gfx.SpriteSheet;
 
 public class Game implements Runnable {
 	
@@ -21,8 +22,8 @@ public class Game implements Runnable {
 	private BufferStrategy bs;
 	private Graphics g;
 	
-	private BufferedImage test;
-	private SpriteSheet sheet;
+//	private BufferedImage test;
+//	private SpriteSheet sheet;
 	
 	
 	
@@ -36,10 +37,10 @@ public class Game implements Runnable {
 	
 	//init- Initialize the graphics of the game
 	public void init() {
-		Display = new Display(title,width, height);
-		test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
-		sheet = new SpriteSheet(test);
-		
+		Display = new Display(title,width, height);  //loaded sprite sheet
+		//test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
+		//sheet = new SpriteSheet(test);
+		Assets.init();	
 					
 		}
 		
@@ -59,7 +60,9 @@ private void tick() {  //could be called update
 		g.clearRect(0, 0, width, height);  //clear screen after draw
 		//Draw here
 		
-		g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);
+		g.drawImage(Assets.dirt, 10, 10, null);
+		      //Rendering part of SpriteSheet
+		//g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);  //Ineficient cropping img many times
 		//g.drawImage(testImage, 10, 10, null);	example
 		
 		//End Draw
