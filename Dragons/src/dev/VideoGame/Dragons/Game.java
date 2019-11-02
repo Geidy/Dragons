@@ -7,8 +7,10 @@ import java.awt.image.BufferStrategy;
 
 import dev.VideoGame.Dragons.Display.*;
 import dev.VideoGame.Dragons.gfx.Assets;
+import dev.VideoGame.Dragons.states.GameState;
 //import dev.VideoGame.Dragons.gfx.ImageLoader;
 //import dev.VideoGame.Dragons.gfx.SpriteSheet;
+import dev.VideoGame.Dragons.states.State;
 
 public class Game implements Runnable {
 	
@@ -24,6 +26,9 @@ public class Game implements Runnable {
 	
 //	private BufferedImage test;
 //	private SpriteSheet sheet;
+	
+	//States
+	private State gameState;
 	
 	
 	
@@ -41,12 +46,17 @@ public class Game implements Runnable {
 		//test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
 		//sheet = new SpriteSheet(test);
 		Assets.init();	
+		
+		gameState = new GameState();
+		State.setState(gameState);
 					
 		}
 		
-	
+	//int x = 0;
 private void tick() {  //could be called update
-		
+	//x +=1;
+		if(State.getState() != null)
+			State.getState().tick();
 	}
 	
 	private void render() {
@@ -59,8 +69,11 @@ private void tick() {  //could be called update
 		//Clear the screen
 		g.clearRect(0, 0, width, height);  //clear screen after draw
 		//Draw here
+		if(State.getState() != null)
+			State.getState().render(g);
 		
-		g.drawImage(Assets.dirt, 10, 10, null);
+		
+		//g.drawImage(Assets.dirt, x, 10, null);
 		      //Rendering part of SpriteSheet
 		//g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);  //Ineficient cropping img many times
 		//g.drawImage(testImage, 10, 10, null);	example
@@ -74,10 +87,35 @@ private void tick() {  //could be called update
 	public void run() {  //majority of our code will go
 		
 		init();
+		
+		int fps = 60;
+	    double timePerTick = 1000000000 / fps;
+		double delta = 0;
+		long now;
+		long lastTime = System.nanoTime();
+		long timer = 0;
+		int ticks = 0;
+		
 		//running is true loop-keep
 		while(running) {  //tick and render makes
-			tick();    //everything run over and over
-			render();
+			now = System.nanoTime();
+			delta += (now - lastTime) / timePerTick;
+			timer += now - lastTime;
+			lastTime = now;
+			
+			if(delta >= 1) {
+				tick();    //everything run over and over
+				render();
+				ticks++;
+				delta--;
+				
+			}
+			if(timer >= 1000000000) {
+				System.out.println("Ticks and frames:" + ticks);
+				ticks = 0;
+				timer = 0;
+			}
+			
 	}
 		
 		stop();
