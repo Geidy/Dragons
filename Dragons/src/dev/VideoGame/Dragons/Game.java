@@ -8,6 +8,7 @@ import java.awt.image.BufferStrategy;
 import dev.VideoGame.Dragons.Display.*;
 import dev.VideoGame.Dragons.gfx.Assets;
 import dev.VideoGame.Dragons.states.GameState;
+import dev.VideoGame.Dragons.states.MenuState;
 //import dev.VideoGame.Dragons.gfx.ImageLoader;
 //import dev.VideoGame.Dragons.gfx.SpriteSheet;
 import dev.VideoGame.Dragons.states.State;
@@ -29,9 +30,9 @@ public class Game implements Runnable {
 	
 	//States
 	private State gameState;
-	
-	
-	
+	private State menuState;
+		
+		
 	public Game(String title, int width, int height) {
 		this.width = width;
 		this.height = height;
@@ -49,6 +50,8 @@ public class Game implements Runnable {
 		
 		gameState = new GameState();
 		State.setState(gameState);
+		menuState = new MenuState();
+				
 					
 		}
 		
