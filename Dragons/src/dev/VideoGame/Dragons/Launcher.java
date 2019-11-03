@@ -4,7 +4,7 @@ package dev.VideoGame.Dragons;
 
 public class Launcher {
 	public static void main(String[] args) {
-		Game game = new Game("Dragons", 700, 700); //Numbers means width and height
+		Game game = new Game("Dragons", 600, 600); //Numbers means width and height
 		game.start();
 		
 	}

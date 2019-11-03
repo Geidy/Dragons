@@ -7,8 +7,7 @@ public abstract class Entity {
 	protected float x, y;   //Achieve smooth movement
 	protected int width, height; //help draw images in diff places on scree
 		
-	
-	public Entity(float x, float y) {
+	public Entity(float x, float y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;

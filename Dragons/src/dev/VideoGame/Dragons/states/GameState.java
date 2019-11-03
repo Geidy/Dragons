@@ -2,6 +2,7 @@ package dev.VideoGame.Dragons.states;
 
 import java.awt.Graphics;
 
+import dev.VideoGame.Dragons.Game;
 import dev.VideoGame.Dragons.entities.creatures.Player;
 
 //import dev.VideoGame.Dragons.gfx.Assets;
@@ -10,8 +11,9 @@ public class GameState extends State{
 	
 	private Player player;
 		
-	public GameState() {
-		player = new Player(100, 100);  //position
+	public GameState(Game game) {
+		super(game);
+		player = new Player(game, 100, 100);  //position
 		
 	}
 
@@ -27,6 +29,7 @@ public class GameState extends State{
 		player.render(g);
 				
 	}
+
 	
 
 }
