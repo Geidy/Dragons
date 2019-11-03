@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import dev.VideoGame.Dragons.Display.*;
 import dev.VideoGame.Dragons.gfx.Assets;
+import dev.VideoGame.Dragons.input.KeyManager;
 import dev.VideoGame.Dragons.states.GameState;
 import dev.VideoGame.Dragons.states.MenuState;
 //import dev.VideoGame.Dragons.gfx.ImageLoader;
@@ -31,12 +32,16 @@ public class Game implements Runnable {
 	//States
 	private State gameState;
 	private State menuState;
+	
+	//input
+	private KeyManager keyManager;
 		
 		
 	public Game(String title, int width, int height) {
 		this.width = width;
 		this.height = height;
 		this.title = title;
+		keyManager = new KeyManager();
 				
 	}
 	
@@ -46,11 +51,12 @@ public class Game implements Runnable {
 		Display = new Display(title,width, height);  //loaded sprite sheet
 		//test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
 		//sheet = new SpriteSheet(test);
+		Display.getFrame().addKeyListener(keyManager);
 		Assets.init();	
 		
-		gameState = new GameState();
+		gameState = new GameState(this);
 		State.setState(gameState);
-		menuState = new MenuState();
+		menuState = new MenuState(this);
 				
 					
 		}
@@ -58,6 +64,8 @@ public class Game implements Runnable {
 	//int x = 0;
 private void tick() {  //could be called update
 	//x +=1;
+	keyManager.tick();
+	
 		if(State.getState() != null)
 			State.getState().tick();
 	}
@@ -122,6 +130,10 @@ private void tick() {  //could be called update
 	}
 		
 		stop();
+		
+	}
+	public KeyManager getKeyManager() {
+		return keyManager;
 	}
 	
 	public synchronized void start() {
