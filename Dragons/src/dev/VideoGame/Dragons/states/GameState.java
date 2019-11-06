@@ -4,6 +4,7 @@ import java.awt.Graphics;
 
 import dev.VideoGame.Dragons.Game;
 import dev.VideoGame.Dragons.entities.creatures.Player;
+import dev.VideoGame.Dragons.tiles.Tile;
 
 //import dev.VideoGame.Dragons.gfx.Assets;
 
@@ -27,6 +28,7 @@ public class GameState extends State{
 	public void render(Graphics g) {
 		//g.drawImage(Assets.dirt, 0, 0, null);
 		player.render(g);
+		Tile.tiles[1].render(g, 0, 0);
 				
 	}
 
