@@ -11,7 +11,7 @@ public class Assets {
 	
 	
 	public static void init(){
-		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/Sonic_dragon.png"));
+		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/dragons-trans.png"));
 		
 		player = sheet.crop(0, 0, width, height); //1st line 1st position on sprite sheet
 		dirt = sheet.crop(width, 0, width, height);  //1st line 2nd position on sprite sheet
