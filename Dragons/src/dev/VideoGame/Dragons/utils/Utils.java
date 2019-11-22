@@ -30,8 +30,8 @@ public class Utils {
 			return Integer.parseInt(number);
 		}catch(NumberFormatException e) {
 			e.printStackTrace();
-			return 0;
 		}
+		return 0;
 	}
 
 }
