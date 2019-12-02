@@ -18,7 +18,7 @@ public class GameState extends State{
 		super(game);
 		player = new Player(game, 100, 100);  //position
 		//world = new World(""); before world.text
-		world = new World("res/worlds/world1.txt");
+		world = new World(game, "res/worlds/world1.txt");
 		
 		
 	}
