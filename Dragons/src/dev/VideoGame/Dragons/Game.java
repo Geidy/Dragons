@@ -86,7 +86,7 @@ private void tick() {  //could be called update
 		
 		//g.drawImage(Assets.dirt, x, 10, null);
 		      //Rendering part of SpriteSheet
-		//g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);  //Ineficient cropping img many times
+		//g.drawImage(sheet.crop(0, 0, 86, 74),20, 35, null);  //Inefficient cropping img many times
 		//g.drawImage(testImage, 10, 10, null);	example
 		
 		//End Draw
