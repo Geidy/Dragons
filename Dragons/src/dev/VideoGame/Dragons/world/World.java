@@ -2,16 +2,19 @@ package dev.VideoGame.Dragons.world;
 
 import java.awt.Graphics;
 
+import dev.VideoGame.Dragons.Game;
 import dev.VideoGame.Dragons.tiles.Tile;
 import dev.VideoGame.Dragons.utils.Utils;
 
 public class World {
 	
+	private Game game;
 	private int width, height;
 	private int spawnX, spawnY;
 	private int [][] tiles;
 	
-	public World(String path) {
+	public World(Game game,String path) {
+		this.game = game;
 		loadWorld(path);
 		
 	}
