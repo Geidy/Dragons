@@ -16,6 +16,7 @@ public class Player extends Creature {
 	public void tick() {
 		getInput();
 		move();
+		game.getGameCamera().centerOnEntity(this);
 		
 //		//handling input and moving player
 //		if(game.getKeyManager().up)
@@ -49,7 +50,8 @@ public class Player extends Creature {
 
 	@Override
 	public void render(Graphics g) {
-		g.drawImage(Assets.player, (int)x, (int)y, width, height, null);		
+		g.drawImage(Assets.player, (int) (x - game.getGameCamera().getxOffset()),
+				(int)(y - game.getGameCamera().getyOffset()), width, height, null);		
 	}
 	
 
