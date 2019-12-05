@@ -7,6 +7,7 @@ import java.awt.image.BufferStrategy;
 
 import dev.VideoGame.Dragons.Display.*;
 import dev.VideoGame.Dragons.gfx.Assets;
+import dev.VideoGame.Dragons.gfx.GameCamera;
 import dev.VideoGame.Dragons.input.KeyManager;
 import dev.VideoGame.Dragons.states.GameState;
 import dev.VideoGame.Dragons.states.MenuState;
@@ -17,7 +18,7 @@ import dev.VideoGame.Dragons.states.State;
 public class Game implements Runnable {
 	
 	private Display Display;
-	public int width, height;
+	private int width, height;
 	public String title;
 	
 	private boolean running = false;
@@ -35,6 +36,9 @@ public class Game implements Runnable {
 	
 	//input
 	private KeyManager keyManager;
+	
+	//Camera
+	private GameCamera gameCamera;
 		
 		
 	public Game(String title, int width, int height) {
@@ -52,7 +56,9 @@ public class Game implements Runnable {
 		//test = ImageLoader.loadImage("/textures/Sonic_dragon.png");
 		//sheet = new SpriteSheet(test);
 		Display.getFrame().addKeyListener(keyManager);
-		Assets.init();	
+		Assets.init();
+		
+		gameCamera = new GameCamera(this,  0, 0);
 		
 		gameState = new GameState(this);
 		State.setState(gameState);
@@ -134,6 +140,18 @@ private void tick() {  //could be called update
 	}
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public GameCamera getGameCamera() {
+		return gameCamera;
+	}
+	
+	public int getWidth() {
+		return width;
+	}
+	
+	public int getHeight() {
+		return height;
 	}
 	
 	public synchronized void start() {
