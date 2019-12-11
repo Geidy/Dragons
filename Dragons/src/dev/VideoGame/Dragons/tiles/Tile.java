@@ -11,6 +11,7 @@ public class Tile {
 	public static Tile GrassTile = new GrassTile(0);
 	public static Tile DirtTile = new DirtTile(1);
 	public static Tile RockTile = new RockTile(2);
+	public static Tile FlowerTile = new FlowerTile(3);
 	
 	
 	
@@ -19,7 +20,7 @@ public class Tile {
 	public static final int TILEWIDTH = 64, TILEHEIGHT = 64;
 	
 	protected BufferedImage texture;
-	protected static int id;
+	protected final int id;
 	
 	public Tile(BufferedImage texture, int id) {
 		this.texture = texture;

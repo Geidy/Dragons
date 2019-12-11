@@ -4,7 +4,7 @@ import dev.VideoGame.Dragons.gfx.Assets;
 
 public class GrassTile extends Tile {
 	
-	public GrassTile( int d ) {
+	public GrassTile( int id ) {
 		super(Assets.grass, id);
 		
 	}
