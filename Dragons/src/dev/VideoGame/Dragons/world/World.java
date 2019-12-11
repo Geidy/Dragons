@@ -37,7 +37,7 @@ public class World {
 	public Tile getTile(int x, int y) {
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
-			return Tile.DirtTile;
+			return Tile.GrassTile;  // It had the dirtTile before
 		return t;
 			
 		}

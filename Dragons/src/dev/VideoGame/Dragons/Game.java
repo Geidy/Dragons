@@ -32,7 +32,7 @@ public class Game implements Runnable {
 	
 	//States
 	private State gameState;
-	private State menuState;
+	//private State menuState;
 	
 	//input
 	private KeyManager keyManager;
@@ -58,11 +58,11 @@ public class Game implements Runnable {
 		Display.getFrame().addKeyListener(keyManager);
 		Assets.init();
 		
-		gameCamera = new GameCamera(this,  0, 0);
+		gameCamera = new GameCamera(this, 0, 0);
 		
 		gameState = new GameState(this);
 		State.setState(gameState);
-		menuState = new MenuState(this);
+		//menuState = new MenuState(this);
 				
 					
 		}
